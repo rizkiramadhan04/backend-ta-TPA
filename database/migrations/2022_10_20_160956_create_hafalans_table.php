@@ -17,7 +17,7 @@ class CreateHafalansTable extends Migration
             $table->bigIncrements("id");
             $table->integer('murid_id')->nullable();
             $table->string('materi_hafalan')->nullable();
-            $table->date('tgl_hafalan')->nullable();
+            $table->date('tanggal_hafalan')->nullable();
             $table->string('nilai')->nullable();
             $table->integer('guru_id')->nullable();
 
