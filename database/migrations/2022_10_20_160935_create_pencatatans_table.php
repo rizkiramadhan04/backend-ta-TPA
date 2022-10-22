@@ -18,6 +18,7 @@ class CreatePencatatansTable extends Migration
             $table->integer('murid_id')->nullable();
             $table->integer('no_surat')->nullable();
             $table->integer('no_ayat')->nullable();
+            $table->integer('no_iqro')->nullable();
             $table->integer('jilid')->nullable();
             $table->integer('halaman')->nullable();
             $table->integer('guru_id')->nullable();

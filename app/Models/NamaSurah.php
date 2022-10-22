@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class NamaSurah extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'no_surah', 'nama_surah', 'no_ayat'
+    ];
 }
