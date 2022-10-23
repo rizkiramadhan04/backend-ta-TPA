@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnAlamatToUsersTable extends Migration
+class AddColumnToPencatatansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnAlamatToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('alamat')->nullable()->after('tgl_lahir');
+        Schema::table('pencatatans', function (Blueprint $table) {
+            $table->string('jenis_kitab')->nullable()->after('tanggal');
         });
     }
 
@@ -25,8 +25,8 @@ class AddColumnAlamatToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('alamat');
+        Schema::table('pencatatans', function (Blueprint $table) {
+            $table->dropColumn('jenis_kitab');
         });
     }
 }
