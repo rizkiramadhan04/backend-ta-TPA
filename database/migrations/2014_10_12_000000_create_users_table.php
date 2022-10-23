@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('status')->default(0);
             $table->date('tgl_lahir')->nullable();
             $table->string('tingkatan')->nullable();
-            $table->integer('no_hp')->nullable();
+            $table->string('no_hp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,7 +2,7 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
+     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
          <div class="sidebar-brand-icon rotate-n-15">
              <p>Toko</p>
          </div>
@@ -14,7 +14,7 @@
 
      <!-- Nav Item - Dashboard -->
      <li class="nav-item active">
-         <a class="nav-link" href="{{ route('admin.home') }}">
+         <a class="nav-link" href="#">
              <i class="fas fa-fw fa-tachometer-alt"></i>
              <span>Dashboard</span></a>
      </li>
@@ -29,7 +29,7 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-         <a class="nav-link collapsed" href="{{ route('admin.user') }}">
+         <a class="nav-link collapsed" href="{{ route('user') }}">
              <i class="fas fa-fw fa-cog"></i>
              <span>User</span>
          </a>
@@ -52,13 +52,13 @@
          </a>
          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="{{ route('admin.produk') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">Produk</h6>
                  </a>
-                 <a class="collapse-item" href="{{ route('admin.create-produk-page') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">Tambah Produk Baru</h6>
                  </a>
-                 <a class="collapse-item" href="{{ route('admin.input-stock-produk') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">Input Stock Produk</h6>
                  </a>
              </div>
@@ -85,13 +85,13 @@
          </a>
          <div id="data-laporan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="{{ route('admin.riwayat-pembelian') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">History Produk Masuk</h6>
                  </a>
-                 <a class="collapse-item" href="{{ route('admin.penjualan') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">Data Penjualan</h6>
                  </a>
-                 <a class="collapse-item" href="{{ route('admin.pembelian') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">Data Pembelian</h6>
                  </a>
              </div>
@@ -107,7 +107,7 @@
          </a>
          <div id="data-suplier" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="{{ route('admin.pemasok') }}">
+                 <a class="collapse-item" href="#">
                      <h6 class="collapse-header">Pemasok</h6>
                  </a>
              </div>
