@@ -26,3 +26,16 @@ Route::post('/user-create', [App\Http\Controllers\Admin\UserController::class, '
 Route::get('/user-update-page/{id}', [App\Http\Controllers\Admin\UserController::class, 'updatePage'])->name('admin.user-update-page');
 Route::post('/user-update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.user-update');
 Route::post('/user-delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'delete'])->name('admin.user-delete');
+
+//Agenda
+Route::get('/agenda', 'Admin\AgendaController@index')->name('admin.agenda');
+Route::get('/agenda-create-page', 'Admin\AgendaController@createPage')->name('admin.agenda-create-page');
+Route::get('/agenda-detail/{id}', 'Admin\AgendaController@detail')->name('admin.agenda-detail');
+Route::get('/agenda-update-page/{id}', 'Admin\AgendaController@updatePage')->name('admin.agenda-update-page');
+//CRUD Agenda
+Route::post('/agenda-create', 'Admin\AgendaController@create')->name('admin.agenda-create');
+
+//Pembayaran
+Route::get('/pembayaran', 'Admin\PembayaranController@index')->name('admin.pembayaran');
+Route::get('/pembayaran-create-page', 'Admin\PembayaranController@createPage')->name('admin.pembayaran-create-page');
+Route::get('/pembayaran-detail/{id}', 'Admin\PembayaranController@detail')->name('admin.pembayaran-detail');

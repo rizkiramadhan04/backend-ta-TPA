@@ -3,9 +3,9 @@
 @section('content')
     <div class="text-center">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Produk</h1>
-            <a href="{{ route('admin.produk.export') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fa-solid fa-download"></i> Export Excel
+            <h1 class="h3 mb-0 text-gray-800">Agenda</h1>
+            <a href="{{ route('admin.agenda-create-page') }}" class="btn btn-sm btn-primary shadow-sm">
+                <i class="fa-solid fa-plus"></i> Buat Agenda Baru
             </a>
         </div>
         <div class="row">
@@ -14,11 +14,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Produk</th>
-                            <th>Stock Saat Ini</th>
-                            <th>Jumlah yang Keluar</th>
-                            <th>Harga Beli</th>
-                            <th>Harga Jual</th>
+                            <th>Nama Agenda</th>
+                            <th>Tanggal Agenda</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,18 +26,18 @@
                         @forelse ($item as $obj)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $obj->nama_produk }}</td>
-                                <td>{{ $obj->total - $obj->jml_keluar }}</td>
-                                <td>{{ $obj->jml_keluar }}</td>
-                                <td>{{ $obj->harga_beli }}</td>
-                                <td>{{ $obj->harga_jual }}</td>
+                                <td>#</td>
+                                <td>#</td>
                                 <td>
-                                    <a href="{{ route('admin.update-produk-page', $obj->id) }}" class="btn btn-success">
+                                    <a href="#" class="btn btn-success">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-success">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
 
-                                    <form action="{{ route('admin.delete-produk', $obj->id) }}" method="post"
-                                        class="d-inline">
+                                    <form action="#" method="post" class="d-inline">
                                         @csrf
                                         <button class="btn btn-danger">
                                             <i class="fa fa-trash"></i>

@@ -40,75 +40,71 @@
 
      <!-- Heading -->
      <div class="sidebar-heading">
-         Produk Dan Penjualan
+         Data Master Guru & Murid
      </div>
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-         <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapsePages"
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#data-master"
              aria-expanded="true" aria-controls="collapsePages">
              <i class="fas fa-fw fa-folder"></i>
-             <span>Data Produk</span>
+             <span>Data Master</span>
          </a>
-         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+         <div id="data-master" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
                  <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">Produk</h6>
+                     <h6 class="collapse-header">Data Guru</h6>
                  </a>
-                 <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">Tambah Produk Baru</h6>
-                 </a>
-                 <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">Input Stock Produk</h6>
+                 <a class="collapse-item" href="{{ route('admin.agenda') }}">
+                     <h6 class="collapse-header">Data Murid</h6>
                  </a>
              </div>
          </div>
      </li>
 
-
-     {{-- <!-- Nav Item - Tables -->
-     <li class="nav-item">
-         <a class="nav-link" href="{{ route('admin.penjualan') }}">
-             <i class="fas fa-fw fa-table"></i>
-             <span>Data Penjualan</span></a>
-     </li> --}}
-
      <!-- Divider -->
-     {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
+     <hr class="sidebar-divider">
+
+     <!-- Heading -->
+     <div class="sidebar-heading">
+         Agenda Majelis
+     </div>
 
      <!-- Nav Item - Tables -->
      <li class="nav-item">
-         <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#data-laporan"
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#data-laporan"
              aria-expanded="true" aria-controls="collapsePages">
              <i class="fas fa-fw fa-folder"></i>
-             <span>Data Laporan</span>
+             <span>Agenda</span>
          </a>
          <div id="data-laporan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">History Produk Masuk</h6>
-                 </a>
-                 <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">Data Penjualan</h6>
-                 </a>
-                 <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">Data Pembelian</h6>
+                 <a class="collapse-item" href="{{ route('admin.agenda') }}">
+                     <h6 class="collapse-header">Data Agenda</h6>
                  </a>
              </div>
          </div>
      </li>
+
+     <!-- Divider -->
+     <hr class="sidebar-divider">
+
+     <!-- Heading -->
+     <div class="sidebar-heading">
+         Riwayat Pembayaran
+     </div>
 
      <!-- Nav Item - Tables -->
      <li class="nav-item">
          <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#data-suplier"
              aria-expanded="true" aria-controls="collapsePages">
              <i class="fas fa-fw fa-folder"></i>
-             <span>Data Pemasok</span>
+             <span>Pembayaran</span>
          </a>
          <div id="data-suplier" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="#">
-                     <h6 class="collapse-header">Pemasok</h6>
+                 <a class="collapse-item" href="{{ route('admin.pembayaran') }}">
+                     <h6 class="collapse-header">Data Pembayaran</h6>
                  </a>
              </div>
          </div>
