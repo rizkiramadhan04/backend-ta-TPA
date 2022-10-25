@@ -32,8 +32,11 @@ Route::get('/agenda', 'Admin\AgendaController@index')->name('admin.agenda');
 Route::get('/agenda-create-page', 'Admin\AgendaController@createPage')->name('admin.agenda-create-page');
 Route::get('/agenda-detail/{id}', 'Admin\AgendaController@detail')->name('admin.agenda-detail');
 Route::get('/agenda-update-page/{id}', 'Admin\AgendaController@updatePage')->name('admin.agenda-update-page');
+
 //CRUD Agenda
 Route::post('/agenda-create', 'Admin\AgendaController@create')->name('admin.agenda-create');
+Route::post('/agenda-update/{id}', 'Admin\AgendaController@update')->name('admin.agenda-update');
+Route::post('/agenda-delete/{id}', 'Admin\AgendaController@delete')->name('admin.agenda-delete');
 
 //Pembayaran
 Route::get('/pembayaran', 'Admin\PembayaranController@index')->name('admin.pembayaran');
