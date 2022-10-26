@@ -45,7 +45,7 @@ Route::get('/pembayaran-create-page', 'Admin\PembayaranController@createPage')->
 Route::get('/pembayaran-detail/{id}', 'Admin\PembayaranController@detail')->name('admin.pembayaran-detail');
 
 //CRUD Pembayaran
-Route::get('/pembayaran-create', 'Admin\PembayaranController@create')->name('admin.pembayaran-create');
+Route::post('/pembayaran-create', 'Admin\PembayaranController@create')->name('admin.pembayaran-create');
 
 //Guru
 Route::get('/guru', 'Admin\GuruController@index')->name('admin.guru');

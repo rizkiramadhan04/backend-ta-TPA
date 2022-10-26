@@ -20,8 +20,8 @@ class PembayaranController extends Controller
 
     public function detail($id) {
 
-        $data = Pembayaran::select('pembayarans.*', 'users.name as nama_murid')->join('users', 'pembayarans.user_id', '=', 'users.id')->where('pembayarans.id', $id)->get();
-        dd($data);
+        $data = Pembayaran::select('pembayarans.*', 'users.name as nama_murid')->join('users', 'pembayarans.user_id', '=', 'users.id')->where('pembayarans.id', $id)->first();
+        // dd($data->nama_murid);
         return view('admin.pembayaran.detail', compact('data'));
     }
 

@@ -2,7 +2,7 @@
 @section('title', 'Pembayaran')
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row mb-5">
             <div class="content col-lg-6 col-md-6">
 
                 <h6>Nama Murid</h6>
@@ -33,14 +33,14 @@
                 <hr>
                 <br>
 
-                <h6>Tanggal Agenda</h6>
-                <h6><b>{{ $data->tanggal_agenda }}</b></h6>
+                <h6>Tanggal Pembayaran</h6>
+                <h6><b>{{ date('d-m-Y H:i:s', strtotime($data->created_at)) }}</b></h6>
 
             </div>
             <div class="gambar col-lg-6 col-md-6">
-                <h6>Gambar</h6>
-                <img src="{{ asset('storage') . '/agenda/' . base64_decode($data->gambar) }}" alt=""
-                    class="img-thumbnail img-responsive">
+                <h6>Bukti Pembayaran</h6>
+                <img src="{{ asset('storage') . '/pembayaran/' . base64_decode($data->gambar) }}" alt=""
+                    class="img-thumbnail img-responsive mt-2">
             </div>
         </div>
     </div>
