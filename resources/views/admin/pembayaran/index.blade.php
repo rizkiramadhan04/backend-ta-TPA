@@ -28,12 +28,18 @@
                         @forelse ($item as $obj)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $obj->nama_murid }}</td>
+                                <td>{{ $obj->no_rek }}</td>
+                                <td>{{ $obj->jumlah }}</td>
                                 <td>
-                                    <a href="{{ route('admin.agenda-detail', $obj->id) }}" class="btn btn-success">
+                                    <?php if ($obj->status == 0) { ?>
+                                    <span class="badge badge-primary">Belum dilihat</span>
+                                    <?php } else { ?>
+                                    <span class="badge badge-success">Diterima</span>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.pembayaran-detail', $obj->id) }}" class="btn btn-success">
                                         <i class="fa fa-eye"></i>
                                     </a>
 

@@ -53,7 +53,7 @@ class AgendaController extends Controller
 
             $filename = "";
             if ($request->has('gambar')) {
-                $filename = mt_rand(100000, 999999) . '.' . $request->gambar->extension();
+                $filename = 'agenda_' . mt_rand(100000, 999999) . '.' . $request->gambar->extension();
                 $request->gambar->move(public_path('/storage/agenda/'), $filename);
               }
               else {
@@ -75,7 +75,7 @@ class AgendaController extends Controller
             $agenda->save();
 
             DB::commit();
-            return redirect()->route('admin.agenda');
+            return redirect()->route('admin.agenda')->with(['success' => 'Data Agenda '.$agenda->nama_agenda. ' Berhasil disimpan']);;
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('admin.agenda')->withErrors($e->getMessage());
@@ -141,7 +141,7 @@ class AgendaController extends Controller
             // dd($agenda);
 
             DB::commit();
-            return redirect()->route('admin.agenda');
+            return redirect()->route('admin.agenda')->with(['success' => 'Data Agenda '.$agenda->nama_agenda. ' Berhasil diubah']);
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('admin.agenda')->withErrors($e->getMessage());
