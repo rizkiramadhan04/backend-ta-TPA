@@ -70,6 +70,16 @@
                     </div>
                 @enderror
             </div>
+            <div class="form-group col-xl-6 col-md-4">
+                <label for="alamat">Alamat</label>
+                <textarea type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat"
+                    name="alamat" placeholder="Jl. Gotong Royong ..."></textarea>
+                @error('alamat')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
             <div class="form-group col-xl-6 col-md-4 tingkatan d-none">
                 <label for="tingkatan">Tingkatan </label>
                 <select class="form-control @error('tingkatan') is-invalid @enderror" id="tingkatan" name="tingkatan">

@@ -27,22 +27,24 @@ class UserController extends Controller
     public function create(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:225',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'name'      => 'required|max:225',
+            'email'     => 'required|email|unique:users',
+            'password'  => 'required',
             'tgl_lahir' => 'required',
-            'no_hp' => 'required',
-            'status' => 'required',
+            'no_hp'     => 'required',
+            'status'    => 'required',
+            'alamat'    => 'required',
         ],[
-            'name.required' => 'Nama user belum diisi',
-            'email.required' => 'Email belum diisi',
-            'email.email' => 'Mohon masukan email yang benar',
-            'email.unique' => 'Email sudah dimiliki',
-            'password.required' => 'Password belum diisi',
+            'name.required'      => 'Nama user belum diisi',
+            'email.required'     => 'Email belum diisi',
+            'email.email'        => 'Mohon masukan email yang benar',
+            'email.unique'       => 'Email sudah dimiliki',
+            'password.required'  => 'Password belum diisi',
             'tgl_lahir.required' => 'Tanggal Lahir belum diisi',
-            'no_hp.required' => 'Nomor Handphone belum diisi',
-            'status.required' => 'Status belum diisi',
-            'tingkatan.required' => 'Tingkatan belum diisi'
+            'no_hp.required'     => 'Nomor Handphone belum diisi',
+            'status.required'    => 'Status belum diisi',
+            'tingkatan.required' => 'Tingkatan belum diisi',
+            'alamat.required'    => 'Alamat belum diisi',
         ]);
 
         if ($validator->fails()) {
@@ -52,14 +54,15 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->tgl_lahir = $request->tgl_lahir;
-            $user->no_hp = $request->no_hp;
-            $user->status = $request->status;
-            $user->tingkatan = ($request->status == 1 ? 'Pengajar' : $request->tingkatan);
+            $user               = new User();
+            $user->name         = $request->name;
+            $user->email        = $request->email;
+            $user->password     = Hash::make($request->password);
+            $user->tgl_lahir    = $request->tgl_lahir;
+            $user->no_hp        = $request->no_hp;
+            $user->status       = $request->status;
+            $user->tingkatan    = ($request->status == 1 ? 'Pengajar' : $request->tingkatan);
+            $user->alamat       = $request->alamat;
 
             $user->save();
             DB::commit();
@@ -84,18 +87,20 @@ class UserController extends Controller
     public function update(Request $request, $id) {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:225',
-            'email' => 'required|email',
+            'name'      => 'required|max:225',
+            'email'     => 'required|email',
             'tgl_lahir' => 'required',
-            'no_hp' => 'required',
-            'status' => 'required',
+            'no_hp'     => 'required',
+            'status'    => 'required',
+            'alamat'    => 'required',
         ],[
-            'name.required' => 'Nama user belum diisi',
-            'email.required' => 'Email belum diisi',
-            'email.email' => 'Mohon masukan email yang benar',
+            'name.required'      => 'Nama user belum diisi',
+            'email.required'     => 'Email belum diisi',
+            'email.email'        => 'Mohon masukan email yang benar',
             'tgl_lahir.required' => 'Tanggal Lahir belum Diisi',
-            'no_hp.required' => ' Handphone belum diisi',
-            'status.required' => 'Status belum diisi'
+            'no_hp.required'     => ' Handphone belum diisi',
+            'status.required'    => 'Status belum diisi',
+            'alamat.required'    => 'Alamat belum diisi',
         ]);
 
         if ($validator->fails()) {
@@ -108,12 +113,13 @@ class UserController extends Controller
         try {
             
             $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
+                'name'      => $request->name,
+                'email'     => $request->email,
                 'tgl_lahir' => $request->tgl_lahir,
-                'ho_hp' => $request->no_hp,
-                'status' => $request->status,
+                'ho_hp'     => $request->no_hp,
+                'status'    => $request->status,
                 'tingkatan' => $request->tingkatan,
+                'alamat'    => $request->alamat,
             ]);
 
             // dd($user);

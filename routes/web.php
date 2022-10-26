@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// User
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('user');
 Route::get('/user-create-page', [App\Http\Controllers\Admin\UserController::class, 'createPage'])->name('admin.user-create-page');
@@ -42,3 +43,7 @@ Route::post('/agenda-delete/{id}', 'Admin\AgendaController@delete')->name('admin
 Route::get('/pembayaran', 'Admin\PembayaranController@index')->name('admin.pembayaran');
 Route::get('/pembayaran-create-page', 'Admin\PembayaranController@createPage')->name('admin.pembayaran-create-page');
 Route::get('/pembayaran-detail/{id}', 'Admin\PembayaranController@detail')->name('admin.pembayaran-detail');
+
+//Guru
+Route::get('/guru', 'Admin\GuruController@index')->name('admin.guru');
+Route::get('/guru-detail/{id}', 'Admin\GuruController@detail')->name('admin.guru-detail');

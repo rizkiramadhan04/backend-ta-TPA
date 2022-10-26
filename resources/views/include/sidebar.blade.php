@@ -24,7 +24,7 @@
 
      <!-- Heading -->
      <div class="sidebar-heading">
-         Interface
+         Pengguna
      </div>
 
      <!-- Nav Item - Pages Collapse Menu -->
@@ -52,7 +52,7 @@
          </a>
          <div id="data-master" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="#">
+                 <a class="collapse-item" href="{{ route('admin.guru') }}">
                      <h6 class="collapse-header">Data Guru</h6>
                  </a>
                  <a class="collapse-item" href="{{ route('admin.agenda') }}">
