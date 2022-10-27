@@ -57,7 +57,7 @@
                 <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar"
                     name="gambar" value="">
                     <?php if(!empty($data->gambar)){ ?>
-						<img src="{{ asset("storage")."/agenda/".base64_decode($data->gambar) }}" style="width:30%;">
+						<img src="{{ asset("storage")."/agenda/".base64_decode($data->gambar) }}" class="img-thumbnail img-responsive mt-3" style="width:30%;"> : Gambar saat ini
 					<?php } ?>
                 @error('gambar')
                     <div class="invalid-feedback">

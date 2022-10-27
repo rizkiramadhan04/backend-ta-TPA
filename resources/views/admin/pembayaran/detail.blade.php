@@ -40,7 +40,7 @@
             <div class="gambar col-lg-6 col-md-6">
                 <h6>Bukti Pembayaran</h6>
                 <img src="{{ asset('storage') . '/pembayaran/' . base64_decode($data->gambar) }}" alt=""
-                    class="img-thumbnail img-responsive mt-2">
+                    class="img-thumbnail img-responsive mt-2" style="width: 60%">
             </div>
         </div>
     </div>

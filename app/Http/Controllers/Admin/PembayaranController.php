@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class PembayaranController extends Controller
 {
@@ -89,5 +90,20 @@ class PembayaranController extends Controller
             DB::rollBack();
             return redirect()->route('admin.pembayaran')->withErrors($e->getMessage());
         }
+    }
+
+    public function delete($id) {
+       
+        $pembayaran = Pembayaran::findOrFail($id);
+
+        $filename = public_path('/storage/pembayaran/' . base64_decode($pembayaran->gambar));
+        
+        if (File::exists($filename)) {
+            File::delete($filename);
+        }
+
+        $pembayaran->delete();
+
+        return redirect()->route('admin.pembayaran')->with(['success' => 'Data pembayaran berhasil di hapus']);
     }
 }

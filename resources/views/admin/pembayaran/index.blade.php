@@ -43,7 +43,7 @@
                                         <i class="fa fa-eye"></i>
                                     </a>
 
-                                    <form action="#" method="post" class="d-inline">
+                                    <form action="{{ route('admin.pembayaran-delete', $obj->id) }}" method="post" class="d-inline">
                                         @csrf
                                         <button class="btn btn-danger">
                                             <i class="fa fa-trash"></i>

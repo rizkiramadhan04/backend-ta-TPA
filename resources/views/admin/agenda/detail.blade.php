@@ -23,7 +23,7 @@
             </div>
             <div class="gambar col-lg-6 col-md-6">
                 <h6>Gambar</h6>
-                <img src="{{ asset("storage")."/agenda/".base64_decode($data->gambar) }}" alt="" class="img-thumbnail img-responsive">
+                <img src="{{ asset("storage")."/agenda/".base64_decode($data->gambar) }}" alt="" class="img-thumbnail img-responsive" style="width: 60%">
             </div>
         </div>
     </div>
