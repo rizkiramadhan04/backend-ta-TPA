@@ -2,6 +2,9 @@
 @section('title', 'Tambah Agenda')
 @section('content')
     <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Tambah Agenda</h1>
+        </div>
 
         @if(Session::has('error'))
 		    @if ($message = Session::get('error'))

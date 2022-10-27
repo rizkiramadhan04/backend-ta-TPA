@@ -2,6 +2,9 @@
 @section('title', 'Pembayaran')
 @section('content')
     <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Detail Pembayaran</h1>
+        </div>
         <div class="row mb-5">
             <div class="content col-lg-6 col-md-6">
 

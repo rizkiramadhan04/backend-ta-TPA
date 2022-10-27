@@ -21,7 +21,7 @@
 	    @endif
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Produk</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Guru</h1>
             <a href="{{ route('admin.guru-create-page') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fa-solid fa-plus"></i> Tambah Guru
             </a>
