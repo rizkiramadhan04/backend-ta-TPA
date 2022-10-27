@@ -2,12 +2,30 @@
 @section('title', 'Data Guru')
 @section('content')
     <div class="text-center">
-        {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+         @if(Session::has('error'))
+		    @if ($message = Session::get('error'))
+		    <div class="alert alert-danger alert-block" style="width: 100%;display: block;">
+		    <button type="button" class="close" data-dismiss="alert">×</button> 
+			    <strong>{{ $message }}</strong>
+		    </div>
+		    @endif
+	    @endif
+        @if(Session::has('success'))
+		    @if ($message = Session::get('success'))
+		    <div class="alert alert-success alert-block" style="width: 100%;display: block;">
+		    <button type="button" class="close" data-dismiss="alert">×</button> 
+			    <strong>{{ $message }}</strong>
+		    </div>
+		    @endif
+	    @endif
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Produk</h1>
-            <a href="{{ route('admin.produk.export') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fa-solid fa-download"></i> Export Excel
+            <a href="{{ route('admin.guru-create-page') }}" class="btn btn-sm btn-primary shadow-sm">
+                <i class="fa-solid fa-plus"></i> Tambah Guru
             </a>
-        </div> --}}
+        </div>
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">

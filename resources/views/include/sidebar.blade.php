@@ -55,7 +55,7 @@
                  <a class="collapse-item" href="{{ route('admin.guru') }}">
                      <h6 class="collapse-header">Data Guru</h6>
                  </a>
-                 <a class="collapse-item" href="{{ route('admin.agenda') }}">
+                 <a class="collapse-item" href="{{ route('admin.murid') }}">
                      <h6 class="collapse-header">Data Murid</h6>
                  </a>
              </div>

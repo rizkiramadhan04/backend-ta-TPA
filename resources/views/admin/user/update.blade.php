@@ -2,6 +2,24 @@
 @section('title', 'Edit User')
 @section('content')
     <div class="container-fluid">
+
+         @if(Session::has('error'))
+		    @if ($message = Session::get('error'))
+		    <div class="alert alert-danger alert-block" style="width: 100%;display: block;">
+		    <button type="button" class="close" data-dismiss="alert">×</button> 
+			    <strong>{{ $message }}</strong>
+		    </div>
+		    @endif
+	    @endif
+        @if(Session::has('success'))
+		    @if ($message = Session::get('success'))
+		    <div class="alert alert-success alert-block" style="width: 100%;display: block;">
+		    <button type="button" class="close" data-dismiss="alert">×</button> 
+			    <strong>{{ $message }}</strong>
+		    </div>
+		    @endif
+	    @endif
+
         <div class="d-sm-flex justify-content-between mb-4 text-center">
             <h1 class="h3 mb-0 text-gray-800">Edit User</h1>
         </div>

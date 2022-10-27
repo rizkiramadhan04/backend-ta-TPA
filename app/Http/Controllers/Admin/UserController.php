@@ -48,7 +48,14 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.user-create-page')->withErrors($validator)->withInput();
+
+            if ($request->status == 0) {
+                return redirect()->route('admin.murid-create-page')->withErrors($validator)->withInput();
+            } else if ($request->status == 1) {
+                return redirect()->route('admin.guru-create-page')->withErrors($validator)->withInput();
+            } else {
+                return redirect()->route('admin.user-create-page')->withErrors($validator)->withInput();
+            }
         }
 
         DB::beginTransaction();
@@ -67,7 +74,20 @@ class UserController extends Controller
             $user->save();
             DB::commit();
 
-            return redirect()->route('user');
+            if ($user->status == 0) {
+
+                return redirect()->route('admin.murid')->with(['success', 'Berhasil menambahkan murid !']);
+
+            } else if ($user->status == 1) {
+
+                return redirect()->route('admin.guru')->with(['success', 'Berhasil menambahkan guru !']);
+
+            } else {
+
+                return redirect()->route('user')->with(['success', 'Berhasil menambahkan user !']);
+                
+            }
+
 
         } catch (Exception $e) {
             DB::rollBack();

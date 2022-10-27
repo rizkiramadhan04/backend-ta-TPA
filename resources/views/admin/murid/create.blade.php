@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Tambah User')
+@section('title', 'Tambah Murid')
 @section('content')
     <div class="container-fluid">
 
@@ -21,7 +21,7 @@
 	    @endif
 
         <div class="d-sm-flex justify-content-between mb-4 text-center">
-            <h1 class="h3 mb-0 text-gray-800">Tambah User</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tambah Murid</h1>
         </div>
         <form action="{{ route('admin.user-create') }}" method="POST">
             @csrf
@@ -56,11 +56,9 @@
                 @enderror
             </div>
             <div class="form-group col-xl-6 col-md-4">
-                <label for="status">Status </label>
+                <label for="status">Status Sebagai </label>
                 <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                    <option value="">-- Pilih Status --</option>
                     <option value="0">Murid</option>
-                    <option value="1">Guru</option>
                 </select>
                 @error('status')
                     <div class="invalid-feedback">
@@ -98,7 +96,7 @@
                     </div>
                 @enderror
             </div>
-            <div class="form-group col-xl-6 col-md-4 tingkatan d-none">
+            <div class="form-group col-xl-6 col-md-4 tingkatan">
                 <label for="tingkatan">Tingkatan </label>
                 <select class="form-control @error('tingkatan') is-invalid @enderror" id="tingkatan" name="tingkatan">
                     <option value="">-- Pilih Tingkatan --</option>
@@ -112,18 +110,7 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary"> Simpan </button>
+            <button type="submit" class="btn btn-primary mb-3"> Simpan </button>
         </form>
     </div>
 @endsection
-@push('js')
-    <script type="text/javascript">
-        $('#status').on('change', function() {
-            if ($('#status').val() == 0) {
-                $('.tingkatan').removeClass('d-none');
-            } else {
-                $('.tingkatan').addClass('d-none');
-            }
-        });
-    </script>
-@endpush

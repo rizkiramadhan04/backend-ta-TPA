@@ -50,4 +50,12 @@ Route::post('/pembayaran-delete/{id}', 'Admin\PembayaranController@delete')->nam
 
 //Guru
 Route::get('/guru', 'Admin\GuruController@index')->name('admin.guru');
+Route::get('/guru-create-page', 'Admin\GuruController@createPage')->name('admin.guru-create-page');
 Route::get('/guru-detail/{id}', 'Admin\GuruController@detail')->name('admin.guru-detail');
+Route::get('/guru-delete/{id}', 'Admin\GuruController@delete')->name('admin.guru-delete');
+
+//Murid
+Route::get('/murid', 'Admin\MuridController@index')->name('admin.murid');
+Route::get('/murid-create-page', 'Admin\MuridController@createPage')->name('admin.murid-create-page');
+Route::get('/murid-detail/{id}', 'Admin\MuridController@detail')->name('admin.murid-detail');
+Route::post('/murid-delete/{id}', 'Admin\MuridController@delete')->name('admin.murid-delete');

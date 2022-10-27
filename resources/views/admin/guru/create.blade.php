@@ -1,7 +1,10 @@
 @extends('layouts.admin')
-@section('title', 'Tambah User')
+@section('title', 'Tambah Guru')
 @section('content')
     <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between mb-4 text-center">
+            <h1 class="h3 mb-0 text-gray-800">Tambah Guru</h1>
+        </div>
 
          @if(Session::has('error'))
 		    @if ($message = Session::get('error'))
@@ -20,9 +23,6 @@
 		    @endif
 	    @endif
 
-        <div class="d-sm-flex justify-content-between mb-4 text-center">
-            <h1 class="h3 mb-0 text-gray-800">Tambah User</h1>
-        </div>
         <form action="{{ route('admin.user-create') }}" method="POST">
             @csrf
             <div class="form-group col-xl-6 col-md-4">
@@ -56,10 +56,8 @@
                 @enderror
             </div>
             <div class="form-group col-xl-6 col-md-4">
-                <label for="status">Status </label>
+                <label for="status">Status Sebagai </label>
                 <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                    <option value="">-- Pilih Status --</option>
-                    <option value="0">Murid</option>
                     <option value="1">Guru</option>
                 </select>
                 @error('status')
@@ -93,20 +91,6 @@
                 <textarea type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat"
                     name="alamat" placeholder="Jl. Gotong Royong ..."></textarea>
                 @error('alamat')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="form-group col-xl-6 col-md-4 tingkatan d-none">
-                <label for="tingkatan">Tingkatan </label>
-                <select class="form-control @error('tingkatan') is-invalid @enderror" id="tingkatan" name="tingkatan">
-                    <option value="">-- Pilih Tingkatan --</option>
-                    <option value="Awal">Awal</option>
-                    <option value="Lanjut">Lanjut</option>
-                    <option value="Lancar">Lancar</option>
-                </select>
-                @error('tingkatan')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
