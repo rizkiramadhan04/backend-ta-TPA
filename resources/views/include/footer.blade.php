@@ -1,7 +1,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Toko Serba 99 &copy; 2020</span>
+            <span>Majelis Al Muhibbin &copy; 2022</span>
         </div>
     </div>
 </footer>

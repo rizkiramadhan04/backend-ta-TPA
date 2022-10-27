@@ -59,3 +59,11 @@ Route::get('/murid', 'Admin\MuridController@index')->name('admin.murid');
 Route::get('/murid-create-page', 'Admin\MuridController@createPage')->name('admin.murid-create-page');
 Route::get('/murid-detail/{id}', 'Admin\MuridController@detail')->name('admin.murid-detail');
 Route::post('/murid-delete/{id}', 'Admin\MuridController@delete')->name('admin.murid-delete');
+
+//Presensi
+Route::get('/presensi', 'Admin\PresensiController@index')->name('admin.presensi');
+Route::get('/data-presensi', 'Admin\PresensiController@dataPresensi')->name('admin.data-presensi');
+Route::get('/presensi-create-page', 'Admin\PresensiController@createPage')->name('admin.presensi-create-page');
+Route::post('/presensi-create', 'Admin\PresensiController@create')->name('admin.presensi-create');
+Route::get('/presensi-detail/{id}', 'Admin\PresensiController@detail')->name('admin.presensi-detail');
+Route::post('/presensi-delete/{id}', 'Admin\PresensiController@delete')->name('admin.presensi-delete');

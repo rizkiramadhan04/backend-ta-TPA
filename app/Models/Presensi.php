@@ -15,5 +15,7 @@ class Presensi extends Model
         'status_presensi',
         'tanggal_masuk',
         'tanggal_izin',
+        'jadwal_presensi_id',
+        'kode_jadwal_presensi',
     ];
 }

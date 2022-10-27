@@ -3,10 +3,7 @@
 
      <!-- Sidebar - Brand -->
      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-         <div class="sidebar-brand-icon rotate-n-15">
-             <p>Toko</p>
-         </div>
-         <div class="sidebar-brand-text mx-1">Serba <sup>99</sup></div>
+         <div class="sidebar-brand-text mx-1">Al-Muhibbin</div>
      </a>
 
      <!-- Divider -->
@@ -24,14 +21,22 @@
 
      <!-- Heading -->
      <div class="sidebar-heading">
-         Pengguna
+         Presensi
      </div>
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-         <a class="nav-link collapsed" href="{{ route('user') }}">
+         <a class="nav-link collapsed" href="{{ route('admin.presensi') }}">
              <i class="fas fa-fw fa-cog"></i>
-             <span>User</span>
+             <span>Jadwal Presensi</span>
+         </a>
+     </li>
+
+     <!-- Nav Item - Pages Collapse Menu -->
+     <li class="nav-item">
+         <a class="nav-link collapsed" href="{{ route('admin.data-presensi') }}">
+             <i class="fas fa-fw fa-folder"></i>
+             <span>Data Presensi</span>
          </a>
      </li>
 
