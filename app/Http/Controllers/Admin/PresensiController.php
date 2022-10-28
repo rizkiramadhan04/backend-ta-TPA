@@ -79,7 +79,7 @@ class PresensiController extends Controller
 
     public function dataPresensi() {
         $item = Presensi::select('presensis.*', 'users.name as name', 'users.tingkatan as tingkatan')->join('users', 'presensis.user_id', '=', 'users.id')->get();
-
+        
         return view('admin.presensi.index', compact('item'));
     }
 }

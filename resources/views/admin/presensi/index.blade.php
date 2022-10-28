@@ -21,9 +21,9 @@
         @endif
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Murid</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Presensi</h1>
             <a href="{{ route('admin.murid-create-page') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fa-solid fa-plus"></i> Tambah Murid
+                <i class="fa-solid fa-download"></i> Export Excel
             </a>
         </div>
         <div class="row">
@@ -36,8 +36,7 @@
                             <th>Status Sebagai</th>
                             <th>Tingkatan</th>
                             <th>Tanggal Masuk</th>
-                            <th>Tanggal Izin</th>
-                            <th>Kode Jadwal Presensi</th>
+                            <th>Waktu Presensi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -50,17 +49,15 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $obj->name }}</td>
                                 <td>
-                                    <?php if ($obj->status == 0) { ?>
+                                    <?php if ($obj->status_user == 0) { ?>
                                     <b>Murid</b>
                                     <?php } else { ?>
                                     <b>Guru</b>
                                     <?php } ?>
                                 </td>
                                 <td>{{ $obj->tingkatan }}</td>
-                                <td>{{ date('d-m-Y', strtotime($obj->tgl_lahir)) }}</td>
-                                <td>{{ date('d-m-Y', strtotime($obj->tgl_lahir)) }}</td>
-                                <td>{{ $obj->kode_jadwal_presensi }}</td>
-                                <td>{{ $obj->waktu }}</td>
+                                <td>{{ date('d-m-Y', strtotime($obj->tanggal_masuk)) }}</td>
+                                <td>{{ date('H:i', strtotime($obj->tanggal_masuk)) }}</td>
                                 <td>
                                     <a href="{{ route('admin.murid-detail', $obj->id) }}" class="btn btn-success">
                                         <i class="fa fa-eye"></i>
