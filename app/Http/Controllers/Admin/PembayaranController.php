@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use App\Exports\PembayaranExport;
 
 class PembayaranController extends Controller
 {
@@ -105,5 +106,9 @@ class PembayaranController extends Controller
         $pembayaran->delete();
 
         return redirect()->route('admin.pembayaran')->with(['success' => 'Data pembayaran berhasil di hapus']);
+    }
+
+    public function export() {
+        return Excel::download(new PembayaranExport(), 'pembayaran.xlsx');
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Exports\PresensiExport;
+use App\Exports\PencatatanExport;
 
 class MuridController extends Controller
 {
@@ -34,5 +36,13 @@ class MuridController extends Controller
         }
 
         return redirect()->route('admin.murid')->with(['success', 'Data murid' .  $murid->name . 'berhasil dihapus']);
+    }
+
+     public function exportPresensi() {
+        return Excel::download(new PresensiExport(), 'presensi.xlsx');
+    }
+
+    public function exportPencatatan() {
+        return Excel::download(new PencatatanExport(), 'pencatatan.xlsx');
     }
 }

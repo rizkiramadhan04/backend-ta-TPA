@@ -8,6 +8,7 @@ use App\Models\JadwalPresensi;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\PresensiExport;
 
 class PresensiController extends Controller
 {
@@ -81,5 +82,9 @@ class PresensiController extends Controller
         $item = Presensi::select('presensis.*', 'users.name as name', 'users.tingkatan as tingkatan')->join('users', 'presensis.user_id', '=', 'users.id')->get();
         
         return view('admin.presensi.index', compact('item'));
+    }
+
+     public function export() {
+        return Excel::download(new PresensiExport(), 'presensi.xlsx');
     }
 }
