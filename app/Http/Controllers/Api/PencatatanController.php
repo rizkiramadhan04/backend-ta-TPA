@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Hafalan;
+use App\Models\Pencatatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class PencatatanController extends Controller
 {
@@ -12,9 +16,9 @@ class PencatatanController extends Controller
         if (auth()->guard('api')->check()) {
 
             $user_id = auth()->guard('api')->user()->id;
-            $data[] = Pencatatan::where('murid_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Pencatatan::where('murid_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
 
-            if ($data > 0) {
+            if (count($data) > 0) {
                 $response = [
                     'status' => 'success',
                     'data'   => $data,
@@ -39,9 +43,9 @@ class PencatatanController extends Controller
 
         if (auth()->guard('api')->check()) {
 
-            $data[] = Pencatatan::where('murid_id', $request->murid_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Pencatatan::where('murid_id', $request->murid_id)->orderBy('created_at', 'asc')->limit(30)->get();
 
-            if ($data > 0) {
+            if (count($data) > 0) {
                 $response = [
                     'status' => 'success',
                     'data'   => $data,

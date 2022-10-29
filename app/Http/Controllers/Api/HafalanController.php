@@ -16,9 +16,9 @@ class HafalanController extends Controller
 
             $user_id = auth()->guard('api')->user()->id;
 
-            $data[] = Hafalan::where('murid_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Hafalan::where('murid_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
 
-            if ($data > 0) {
+            if (count($data) > 0) {
 
                 $response = [
                     'status' => 'success',
@@ -45,9 +45,9 @@ class HafalanController extends Controller
         
         if (auth()->guard('api')->check()) {
 
-            $data[] = Hafalan::where('murid_id', $request->murid_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Hafalan::where('murid_id', $request->murid_id)->orderBy('created_at', 'asc')->limit(30)->get();
     
-            if ($data > 0) {
+            if (count($data) > 0) {
 
                 $response = [
                     'status' => 'success',

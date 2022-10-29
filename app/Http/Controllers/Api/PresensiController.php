@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Presensi;
 use Illuminate\Http\Request;
+use App\Models\JadwalPresensi;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PresensiController extends Controller
 {
@@ -12,9 +15,9 @@ class PresensiController extends Controller
         if (auth()->guard('api')->check()) {
 
             $user_id = auth()->guard('api')->user()->id;
-            $data[] = Presensi::where('user_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Presensi::where('user_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
 
-            if ($data > 0) {
+            if (count($data) > 0) {
                 $response = [
                     'status' => 'success',
                     'data'   => $data,
@@ -39,9 +42,9 @@ class PresensiController extends Controller
 
         if (auth()->guard('api')->check()) {
 
-            $data[] = Presensi::where('user_id', $request->user_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Presensi::where('user_id', $request->user_id)->orderBy('created_at', 'asc')->limit(30)->get();
 
-            if ($data > 0) {
+            if (count($data) > 0) {
                 $response = [
                     'status' => 'success',
                     'data'   => $data,
