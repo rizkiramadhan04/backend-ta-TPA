@@ -115,9 +115,9 @@ class AgendaController extends Controller
             $filename = "";
             if (!empty($request->file('gambar'))) {
 
-                $file = $request->file('gambar');
-                $extension = $file->getClientOriginalExtension();
-                $filename = 'agenda_' . mt_rand(100000, 999999) . '.' . $request->file('gambar')->extension();
+                $file       = $request->file('gambar');
+                $extension  = $file->getClientOriginalExtension();
+                $filename   = 'agenda_' . mt_rand(100000, 999999) . '.' . $request->file('gambar')->extension();
                 // $locfile = public_path() . '/storage/agenda/'.$filename;
                 $file->move(public_path('/storage/agenda/'), $filename);
             
