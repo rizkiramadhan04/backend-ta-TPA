@@ -42,7 +42,7 @@ class PresensiController extends Controller
 
         if (auth()->guard('api')->check()) {
 
-            $data = Presensi::where('user_id', $request->user_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data = Presensi::where('user_id', $request->murid_id)->orderBy('created_at', 'asc')->limit(30)->get();
 
             if (count($data) > 0) {
                 $response = [
@@ -69,9 +69,10 @@ class PresensiController extends Controller
         
         if (auth()->guard('api')->check()) {
 
-            $getKodeJadwal = JadwalPresensi::where('kode_presensi', base64_decode($request->kode_presensi))->whereDate('tanggal_akhir', '<', $request->tanggal_masuk)->first();
-
-            if ($getKodeJadwal) {
+            $getKodeJadwal = JadwalPresensi::whereDate('tanggal_awal', date('Y-m-d', strtotime($request->tanggal_masuk)))->where('status', 0)->first();
+            $kode_presensi = base64_decode($getKodeJadwal->kode_presensi);
+            
+            if ($kode_presensi == $request->kode_jadwal_presensi) {
 
                 DB::beginTransaction();
                 try {
@@ -81,7 +82,7 @@ class PresensiController extends Controller
                     $presensi = new Presensi;
                     $presensi->user_id = $user_id;
                     $presensi->status_user = $user->status;
-                    $presensi->status_presensi = $status_presensi;
+                    $presensi->status_presensi = 1;
                     $presensi->tanggal_masuk = $request->tanggal_masuk;
                     $presensi->tanggal_izin = $request->tanggal_izin;
                     $presensi->alasan_izin = $request->alasan_izin;

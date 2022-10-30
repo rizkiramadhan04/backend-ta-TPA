@@ -73,11 +73,13 @@ class HafalanController extends Controller
 
     public function inputHafalan(Request $request) {
 
+        // dd($request->all());
+
         if (auth()->guard('api')->check()) {
 
             $validator = Validator::make($request->all(), [
                 'murid_id'        => 'required',
-                'meteri_hafalan'  => 'required',
+                'materi_hafalan'  => 'required',
                 'tanggal_hafalan' => 'required',
                 'nilai'           => 'required',
             ], [
@@ -87,7 +89,7 @@ class HafalanController extends Controller
                 'nilai.required'           => 'Nilai belum diisi!',
             ]);
     
-            if ($validator->fail()) {
+            if ($validator->fails()) {
                 return response()->json([
                     'status' => 'error',
                     'message' => $validator->errors(),
@@ -100,21 +102,20 @@ class HafalanController extends Controller
     
                 $hafalan = new Hafalan;
                 $hafalan->murid_id         = $request->murid_id;
-                $hafalan->materi_hafalan   = $request->materi_halafan;
+                $hafalan->materi_hafalan   = $request->materi_hafalan;
                 $hafalan->tanggal_hafalan  = $request->tanggal_hafalan;
                 $hafalan->nilai            = $request->nilai;
                 $hafalan->guru_id          = $guru_id;
         
                 $hafalan->save();
 
-                if ($hafalan->save()) {
-                    DB::commit();
-                    $response = [
-                        'satus'   => 'success',
-                        'message' => 'Berhasil ditambahkan!',
-                        'data'    => $hafalan,
-                    ];
-                }
+                DB::commit();
+                $response = [
+                    'status'   => 'success',
+                    'message' => 'Berhasil ditambahkan!',
+                    'data'    => $hafalan,
+                ];
+
             } catch (Exception $e) {
                 DB::rollback();
                 $response = [
@@ -122,7 +123,14 @@ class HafalanController extends Controller
                     'message' => $e->getMessage(),
                 ];
             }
+        } else {
+            $response = [
+                'status' => 'failed',
+                'message' => 'Mohon untuk login terlebih dahulu!',
+            ];
         }
+
+        return response()->json($response, 200);
         
     }
 }
