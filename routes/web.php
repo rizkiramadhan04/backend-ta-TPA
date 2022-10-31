@@ -47,6 +47,7 @@ Route::get('/pembayaran-detail/{id}', 'Admin\PembayaranController@detail')->name
 //CRUD Pembayaran
 Route::post('/pembayaran-create', 'Admin\PembayaranController@create')->name('admin.pembayaran-create');
 Route::post('/pembayaran-delete/{id}', 'Admin\PembayaranController@delete')->name('admin.pembayaran-delete');
+Route::post('/pembayaran-update-status/{id}', 'Admin\PembayaranController@updateStatus')->name('admin.pembayaran-update-status');
 
 //Guru
 Route::get('/guru', 'Admin\GuruController@index')->name('admin.guru');

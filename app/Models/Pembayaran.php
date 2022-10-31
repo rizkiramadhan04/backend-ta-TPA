@@ -10,6 +10,6 @@ class Pembayaran extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'jenis_pembayaran', 'jumlah', 'no_rek', 'gambar',
+        'user_id', 'jenis_pembayaran', 'jumlah', 'no_rek', 'gambar', 'status',
     ];
 }

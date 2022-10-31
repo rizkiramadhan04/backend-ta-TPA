@@ -108,6 +108,19 @@ class PembayaranController extends Controller
         return redirect()->route('admin.pembayaran')->with(['success' => 'Data pembayaran berhasil di hapus']);
     }
 
+    public function updateStatus($id) {
+
+        $data = Pembayaran::findOrFail($id);
+
+       if ($data) {
+         $data->update([
+            'status' => 1,
+            ]);
+       }
+
+        return redirect()->route('admin.pembayaran')->with(['success' => 'Data status pembayaran berhasil diubah']);
+    }
+
     public function export() {
         return Excel::download(new PembayaranExport(), 'pembayaran.xlsx');
     }
