@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         if(!$token = auth()->guard('api')->attempt($credentials)) {
             return response()->json([
-                'success' => false,
+                'success' => 'failed',
                 'message' => 'Email atau Password Anda salah'
             ], 401);
         }
@@ -50,19 +50,19 @@ class AuthController extends Controller
             $user = User::where('id', $user_id)->first();
 
             $response = [
-                'status' => 'success',
-                'nama' => $user->name,
-                'email' => $user->email,
-                'status_user' => ($user->status == 0 ? 'Mutid' : 'Guru'),
+                'status'        => 'success',
+                'nama'          => $user->name,
+                'email'         => $user->email,
+                'status_user'   => ($user->status == 0 ? 'Mutid' : 'Guru'),
                 'tanggal_lahir' => date('d-m-Y', strtotime($user->tgl_lahir)),
-                'alamat' => $user->alamat,
-                'tingkatan' => $user->tingkatan,
-                'no_hp' => $user->no_hp,
+                'alamat'        => $user->alamat,
+                'tingkatan'     => $user->tingkatan,
+                'no_hp'         => $user->no_hp,
 
             ];
         } else {
             $response = [
-                'status' => 'failed',
+                'status'  => 'failed',
                 'message' => 'Mohon untuk login untuk terlebih dahulu!'
             ];
         }
@@ -71,8 +71,6 @@ class AuthController extends Controller
     }
 
     public function update(Request $request) {
-
-        // dd($request->all());
 
         if (auth()->guard('api')->check()) {
 

@@ -51,13 +51,13 @@ class PresensiController extends Controller
                 ];
             } else {
                 $response = [
-                    'status' => 'failed',
+                    'status'  => 'failed',
                     'message' => 'Data tidak ada!',
                 ];
             }
         } else {
             $response = [
-                'status' => 'failed',
+                'status'  => 'failed',
                 'message' => 'Mohon untuk login terlebih dahulu!'
             ];
         }
@@ -80,21 +80,21 @@ class PresensiController extends Controller
                     $user = auth()->guard('api')->user();
     
                     $presensi = new Presensi;
-                    $presensi->user_id = $user_id;
-                    $presensi->status_user = $user->status;
-                    $presensi->status_presensi = 1;
-                    $presensi->tanggal_masuk = $request->tanggal_masuk;
-                    $presensi->tanggal_izin = $request->tanggal_izin;
-                    $presensi->alasan_izin = $request->alasan_izin;
+                    $presensi->user_id          = $user_id;
+                    $presensi->status_user      = $user->status;
+                    $presensi->status_presensi  = 1;
+                    $presensi->tanggal_masuk    = $request->tanggal_masuk;
+                    $presensi->tanggal_izin     = $request->tanggal_izin;
+                    $presensi->alasan_izin      = $request->alasan_izin;
                     $presensi->kode_jadwal_presensi = base64_encode($request->kode_jadwal_presensi);
     
                     $presensi->save();
                     DB::commit();
     
                     $response = [
-                        'status' => 'success',
-                        'message' => 'Data Berhasil disimpan',
-                        'data' => $presensi,
+                        'status'    => 'success',
+                        'message'   => 'Data Berhasil disimpan',
+                        'data'      => $presensi,
                     ];
     
     
@@ -102,20 +102,20 @@ class PresensiController extends Controller
                     DB::rollback();
     
                     $response = [
-                        'status' => 'failed',
+                        'status'  => 'failed',
                         'message' => $e->getMessage(),
                     ];
                 }
             } else {
                 $response = [
-                    'status' => 'failed',
+                    'status'  => 'failed',
                     'message' => 'Kode presensi sudah tidak dapat digunakan!',
                 ];
             }
             
         } else {
             $response = [
-                'status' => 'failed',
+                'status'  => 'failed',
                 'message' => 'Mohon untuk login terlebih dahulu!'
             ];
         }

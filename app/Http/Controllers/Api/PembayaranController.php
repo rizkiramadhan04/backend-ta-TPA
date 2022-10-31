@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pembayaran;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
+use Exception;
 
 class PembayaranController extends Controller
 {
@@ -12,7 +17,7 @@ class PembayaranController extends Controller
         if (auth()->guard('api')->check()) {
     
             $user_id = auth()->guard('api')->user()->id;
-            $data = Pembayaran::where('user_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
+            $data    = Pembayaran::where('user_id', $user_id)->orderBy('created_at', 'asc')->limit(30)->get();
     
             if (count($data) > 0) {
                 $response = [
@@ -21,13 +26,13 @@ class PembayaranController extends Controller
                 ];
             } else {
                 $response = [
-                    'status' => 'failed',
+                    'status'  => 'failed',
                     'message' => 'Data tidak ada!',
                 ];
             }
         } else {
             $response = [
-                'status' => 'failed',
+                'status'  => 'failed',
                 'message' => 'Mohon untuk login terlebih dahulu!'
             ];
         }
@@ -37,46 +42,65 @@ class PembayaranController extends Controller
 
     public function inputPembayaran(Request $request) {
 
-        // dd($request->all());
-
         if (auth()->guard('api')->check()) {
 
             $validator = Validator::make($request->all(), [
-                ''        => 'required',
-                ''  => 'required',
-                '' => 'required',
-                ''           => 'required',
+                'no_hp'               => 'required',
+                'jumlah'              => 'required',
+                'no_rek'              => 'required',
+                'jenis_pembayaran'    => 'required',
+                'gambar'              => 'required|mimes:jpg,JPG,jpeg,JPEG,png,PNG',
             ], [
-                '.required'        => 'Nama murid belum diisi!',
-                '.required'  => ' belum diisi!',
-                '.required' => ' belum diisi!',
-                '.required'           => ' belum diisi!',
+                'no_hp.required'             => 'Nomor HP belum diisi!',
+                'jumlah.required'            => 'Jumlah belum diisi!',
+                'no_rek.required'            => 'Nomor rekening belum diisi!',
+                'jenis_pembayaran.required'  => 'Jenis pembayaran belum diisi!',
+                'gambar.required'            => 'Gambar belum diisi!',
             ]);
     
             if ($validator->fails()) {
                 return response()->json([
-                    'status' => 'error',
+                    'status'  => 'error',
                     'message' => $validator->errors(),
                 ]);
             }
             
             DB::beginTransaction();
             try {
-    
-                $pembayaran = new Pembayaran;
-                $pembayaran->murid_id         = $request->md;
-                $pembayaran->materi_pemb   = $request->materi_pemb;
-                $pembayaran->tanggal_pemb  = $request->tanggal_pemb;
-                $pembayaran-            = $request-;
-                $pembayaran->          = $guru_id;
+                
+                $user_id = auth()->guard('api')->user()->id;
+
+               $filename = "";
+                if ($request->has('gambar')) {
+                    $filename = 'pembayaran_' . mt_rand(100000, 999999) . '.' . $request->gambar->extension();
+                    $request->gambar->move(public_path('/storage/pembayaran/'), $filename);
+                }
+                else {
+                    DB::rollback();
+        
+                    $response = [
+                        'error' => 'File yang anda upload salah'
+                    ];
+        
+                    return response()->json($response, 200);
+                    }
+
+                $pembayaran                   = new Pembayaran;
+                $pembayaran->user_id         = $user_id;
+                $pembayaran->no_hp            = $request->no_hp;
+                $pembayaran->jumlah           = $request->jumlah;
+                $pembayaran->no_rek           = $request->no_rek;
+                $pembayaran->jenis_pembayaran = $request->jenis_pembayaran;
+                $pembayaran->status           = 0;
+                $pembayaran->gambar           = base64_encode($filename);
         
                 $pembayaran->save();
 
                 DB::commit();
                 $response = [
                     'status'   => 'success',
-                    'message' => 'Berhasil ditambahkan!',
-                    'data'    => $hafalan,
+                    'message'  => 'Berhasil ditambahkan!',
+                    'data'     => $pembayaran,
                 ];
 
             } catch (Exception $e) {

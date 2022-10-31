@@ -66,7 +66,7 @@ class PencatatanController extends Controller
         return response()->json($response, 200);
     }
 
-    public function inputPencatatan() {
+    public function inputPencatatan(Request $request) {
 
         if (auth()->guard('api')->check()) {
             
@@ -86,7 +86,7 @@ class PencatatanController extends Controller
                 'jenis_kitab.required'  => 'Jenis kitab belum diisi!',
             ]);
     
-            if ($validator->fail()) {
+            if ($validator->fails()) {
                 return response()->json([
                     'status' => 'error',
                     'message' => $validator->errors(),
@@ -98,28 +98,26 @@ class PencatatanController extends Controller
                 
                 $guru_id = auth()->guard('api')->user()->id;
     
-                $hafalan = new Hafalan;
-                $hafalan->murid_id    = $request->murid_id;
-                $hafalan->no_surah    = $request->no_surah;
-                $hafalan->no_ayat     = $request->no_ayat;
-                $hafalan->no_iqro     = $request->no_iqro;
-                $hafalan->jilid       = $request->jilid;
-                $hafalan->halaman     = $request->halaman;
-                $hafalan->guru_id     = $guru_id;
-                $hafalan->hasil       = $request->hasil;
-                $hafalan->tanggal     = $request->tanggal;
-                $hafalan->jenis_kitab = $request->jenis_kitab;
+                $pencatatan = new Pencatatan;
+                $pencatatan->murid_id    = $request->murid_id;
+                $pencatatan->no_surat    = $request->no_surat;
+                $pencatatan->no_ayat     = $request->no_ayat;
+                $pencatatan->no_iqro     = $request->no_iqro;
+                $pencatatan->jilid       = $request->jilid;
+                $pencatatan->halaman     = $request->halaman;
+                $pencatatan->guru_id     = $guru_id;
+                $pencatatan->hasil       = $request->hasil;
+                $pencatatan->tanggal     = $request->tanggal;
+                $pencatatan->jenis_kitab = $request->jenis_kitab;
 
-                $hafalan->save();
+                $pencatatan->save();
                 DB::commit();
 
-                if ($hafalan->save()) {
-                    $response = [
-                        'status'  => 'success',
-                        'message' => 'Data berhasil disimpan!',
-                        $data     => $hafalan,
-                    ];
-                }
+                $response = [
+                    'status'   => 'success',
+                    'message'  => 'Data berhasil disimpan!',
+                    'data'     => $pencatatan,
+                ];
 
             } catch (Exception $e) {
 
@@ -137,5 +135,7 @@ class PencatatanController extends Controller
                 'message' => 'Mohon untuk login terlebih dahulu!'
             ];
         }
+
+        return response()->json($response, 200);
     }
 }
