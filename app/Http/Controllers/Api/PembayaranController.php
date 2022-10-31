@@ -86,7 +86,7 @@ class PembayaranController extends Controller
                     }
 
                 $pembayaran                   = new Pembayaran;
-                $pembayaran->user_id         = $user_id;
+                $pembayaran->user_id          = $user_id;
                 $pembayaran->no_hp            = $request->no_hp;
                 $pembayaran->jumlah           = $request->jumlah;
                 $pembayaran->no_rek           = $request->no_rek;

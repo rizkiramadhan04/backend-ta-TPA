@@ -68,3 +68,8 @@ Route::get('/presensi-create-page', 'Admin\PresensiController@createPage')->name
 Route::post('/presensi-create', 'Admin\PresensiController@create')->name('admin.presensi-create');
 Route::get('/presensi-detail/{id}', 'Admin\PresensiController@detail')->name('admin.presensi-detail');
 Route::post('/presensi-delete/{id}', 'Admin\PresensiController@delete')->name('admin.presensi-delete');
+
+//Export Murid
+Route::post('/export-hafalan/{id}', 'Admin\MuridController@exportHafalan')->name('admin.export-hafalan');
+Route::post('/export-pencatatan/{id}', 'Admin\MuridController@exportPencatatan')->name('admin.export-pencatatan');
+Route::post('/export-presensi/{id}', 'Admin\MuridController@exporPresensi')->name('admin.export-presensi');

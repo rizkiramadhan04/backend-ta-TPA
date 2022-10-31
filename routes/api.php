@@ -42,3 +42,6 @@ Route::post('/input-data-pencatatan', 'Api\PencatatanController@inputPencatatan'
 //pembayaran
 Route::post('/get-data-pembayaran', 'Api\PembayaranController@getData')->name('api.get-data-pembayaran');
 Route::post('/input-data-pembayaran', 'Api\PembayaranController@inputPembayaran')->name('api.input-data-pembayaran');
+
+//agenda
+Route::get('/get-data-agenda', 'Api\AgendaController@getData')->name('api.get-data-agenda');

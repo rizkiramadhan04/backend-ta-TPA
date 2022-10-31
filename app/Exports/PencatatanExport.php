@@ -9,14 +9,31 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class PencatatanExport implements FromView
 {
+
+    protected $id;
+    protected $tanggal_awal;
+    protected $tanggal_akhir;
+
+    public function __construct($param) {
+        $this->id            = $param['id'];
+        $this->tanggal_awal  = $param['tanggal_awal'];
+        $this->tanggal_akhir = $param['tanggal_akhir'];
+    }
+
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection(): View
+    public function view(): View
     {
-        $pencatatan = Pencatatan::select('pencatatans.*', 'users.name as nama')->join('users', 'users.id', '=', 'pencatatans.murid_id')->get();
-        return view('admin.exports.penjualan_export', [
-            'model' => $pencatatan,
+        $pencatatan = Pencatatan::select('pencatatans.*', 'users.name as nama')
+        ->join('users', 'users.id', '=', 'pencatatans.murid_id')->where('pencatatan', $this->id);
+
+        if($this->tanggal_awal != "" && $this->tanggal_akhir != ""){
+            $pencatatan = $pencatatan->whereBetween('hafalans.created_at', [$this->tanggal_awal, $this->tanggal_akhir]);
+        }
+
+        return view('admin.export.pencatatan', [
+            'model' => $pencatatan->get(),
         ]);
     }
 }

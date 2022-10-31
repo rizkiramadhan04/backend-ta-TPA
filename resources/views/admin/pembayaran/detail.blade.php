@@ -46,10 +46,18 @@
                     class="img-thumbnail img-responsive mt-2" style="width: 60%">
             </div>
         </div>
-        <form action="{{ route('admin.pembayaran-update-status', $data->id) }}" method="post" class="mb-5">
-            @csrf
-            <button type="submit" class="btn btn-primary"> Sudah Diterima </button>
-        </form>
-        
+
+        @if ($data->status == 0)
+            <form action="{{ route('admin.pembayaran-update-status', $data->id) }}" method="post" class="mb-5">
+                @csrf
+                <button type="submit" class="btn btn-primary"> Sudah Diterima </button>
+            </form>
+        @else
+            <form action="{{ route('admin.pembayaran-update-status', $data->id) }}" method="post" class=" d-none mb-5">
+                @csrf
+                <button type="submit" class="btn btn-primary"> Sudah Diterima </button>
+            </form>
+        @endif
+
     </div>
 @endsection

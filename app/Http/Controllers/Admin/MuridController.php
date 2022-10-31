@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Exports\HafalanExport;
 use App\Exports\PresensiExport;
 use App\Exports\PencatatanExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MuridController extends Controller
 {
@@ -42,7 +44,17 @@ class MuridController extends Controller
         return Excel::download(new PresensiExport(), 'presensi.xlsx');
     }
 
-    public function exportPencatatan() {
-        return Excel::download(new PencatatanExport(), 'pencatatan.xlsx');
+    public function exportPencatatan($id) {
+        
+        $nama_user = User::findOrFail($id);
+        $param = array('id' => $id, 'tanggal_awal' => $request->tanggal_awal, 'tanggal_akhir' => $request->tanggal_akhir);
+        return Excel::download(new PencatatanExport($param), 'Mengaji_'.$nama_user->name.'.xlsx');
+    }
+
+    public function exportHafalan(Request $request, $id) {
+
+        $nama_user = User::findOrFail($id);
+        $param = array('id' => $id, 'tanggal_awal' => $request->tanggal_awal, 'tanggal_akhir' => $request->tanggal_akhir);
+        return Excel::download(new HafalanExport($param), 'Hafalan_'.$nama_user->name.'.xlsx');
     }
 }
