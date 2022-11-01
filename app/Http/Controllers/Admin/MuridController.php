@@ -44,7 +44,7 @@ class MuridController extends Controller
         return Excel::download(new PresensiExport(), 'presensi.xlsx');
     }
 
-    public function exportPencatatan($id) {
+    public function exportPencatatan(Request $request, $id) {
         
         $nama_user = User::findOrFail($id);
         $param = array('id' => $id, 'tanggal_awal' => $request->tanggal_awal, 'tanggal_akhir' => $request->tanggal_akhir);

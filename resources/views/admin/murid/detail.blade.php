@@ -154,7 +154,7 @@
                     </div>
                     <div class="modal-body">
                         <h6><b>Data {{ $data->name }}</b></h6>
-                        <form action="{{ route('admin.export-hafalan', $data->id) }}" method="post">
+                        <form action="{{ route('admin.export-pencatatan', $data->id) }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="tanggal_awal">Tanggal Awal</label>

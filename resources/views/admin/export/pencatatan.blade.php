@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TPA Majelis Al Muhibbin - Data Pencatatan</title>
+	<title>TPA Al Muhibbin - Data Mengaji</title>
 </head>
 <body>
 
@@ -29,7 +29,6 @@
 					     <td>{{ $i++ }}</td>
 					     <td>{{ ucwords($value->nama) }}</td>
                          <td>{{ $value->no_surah }}</td>
-                         <td>{{ $value->no_ayat }}</td>
                          <td>{{ $value->no_ayat }}</td>
                          <td>{{ $value->no_iqro }}</td>
                          <td>{{ $value->jilid }}</td>
