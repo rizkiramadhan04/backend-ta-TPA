@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use App\Exports\PembayaranExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PembayaranController extends Controller
 {
@@ -121,7 +122,9 @@ class PembayaranController extends Controller
         return redirect()->route('admin.pembayaran')->with(['success' => 'Data status pembayaran berhasil diubah']);
     }
 
-    public function export() {
-        return Excel::download(new PembayaranExport(), 'pembayaran.xlsx');
+    public function export(Request $request) {
+
+        $param = array('tanggal_awal' => $request->tanggal_awal, 'tanggal_akhir' => $request->tanggal_akhir);
+        return Excel::download(new PembayaranExport($param), 'Pembayaran.xlsx');
     }
 }

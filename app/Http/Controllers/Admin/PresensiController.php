@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Exports\PresensiExport;
+use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PresensiController extends Controller
 {
@@ -84,7 +86,9 @@ class PresensiController extends Controller
         return view('admin.presensi.index', compact('item'));
     }
 
-     public function export() {
-        return Excel::download(new PresensiExport(), 'presensi.xlsx');
+     public function export(Request $request, $id) {
+        $nama_user = User::findOrFail($id);
+        $param = array('id' => $id, 'tanggal_awal' => $request->tanggal_awal, 'tanggal_akhir' => $request->tanggal_akhir);
+        return Excel::download(new PresensiExport($param), 'Presensi_'.$nama_user->name.'.xlsx');
     }
 }

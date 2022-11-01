@@ -72,4 +72,6 @@ Route::post('/presensi-delete/{id}', 'Admin\PresensiController@delete')->name('a
 //Export Murid
 Route::post('/export-hafalan/{id}', 'Admin\MuridController@exportHafalan')->name('admin.export-hafalan');
 Route::post('/export-pencatatan/{id}', 'Admin\MuridController@exportPencatatan')->name('admin.export-pencatatan');
-Route::post('/export-presensi/{id}', 'Admin\MuridController@exporPresensi')->name('admin.export-presensi');
+Route::post('/export-presensi/{id}', 'Admin\PresensiController@export')->name('admin.export-presensi');
+Route::post('/export-pembayaran', 'Admin\PembayaranController@export')->name('admin.export-pembayaran');
+Route::post('/export-mengajar/{id}', 'Admin\GuruController@exportMengajar')->name('admin.export-mengajar');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TPA Majelis Al Muhibbin - Data Pembayaran</title>
+	<title>TPA Al Muhibbin Data Pembayaran</title>
 </head>
 <body>
 
@@ -16,6 +16,7 @@
                          <th>Nomor Rekening</th>
                          <th>Pembayaran Untuk</th>
                          <th>Status</th>
+						 <th>Tanggal Konfirmasi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,11 +26,17 @@
 					     <td>{{ $i++ }}</td>
 					     <td>{{ ucwords($value->nama) }}</td>
                          <td>{{ $value->no_hp }}</td>
+                         <td>{{ number_format($value->jumlah,2,',','.');  }}</td>
                          <td>{{ $value->no_rek }}</td>
-                         <td>{{ $value->jumlah }}</td>
-                         <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                          <td>{{ $value->jenis_pembayaran }}</td>
-                         <td>{{ $value->status }}</td>
+                         <td>
+							<?php if ($value->status == 0) { ?>
+                            <b>Belum Dilihat</b>
+                            <?php } else { ?>
+                            <b>Sudah Diterima</b>
+                    		<?php } ?>
+						 </td>
+                         <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
 				@endforeach
 			</tbody>
 		</table>

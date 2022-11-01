@@ -2,13 +2,14 @@
 
 namespace App\Exports;
 
-use App\Models\Presensi;
+use App\Models\Pencatatan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class PresensiExport implements FromView
+class MengajarExport implements FromView
 {
+
     protected $id;
     protected $tanggal_awal;
     protected $tanggal_akhir;
@@ -24,14 +25,15 @@ class PresensiExport implements FromView
     */
     public function view(): View
     {
-        $presensi = Presensi::select('presensis.*', 'users.name as nama')->join('users', 'users.id', '=', 'presensis.user_id')->where('user_id', $this->id);
+        $pencatatan = Pencatatan::select('pencatatans.*', 'users.name as nama', 'users.tingkatan as tingkatan')
+        ->join('users', 'users.id', '=', 'pencatatans.murid_id')->where('pencatatans.guru_id', $this->id);
         
         if($this->tanggal_awal != "" && $this->tanggal_akhir != ""){
-            $presensi = $presensi->whereBetween('presensis.created_at', [$this->tanggal_awal, $this->tanggal_akhir]);
+            $pencatatan = $pencatatan->whereBetween('pencatatans.created_at', [$this->tanggal_awal, $this->tanggal_akhir]);
         }
 
-        return view('admin.export.presensi', [
-            'model' => $presensi->get(),
+        return view('admin.export.mengajar', [
+            'model' => $pencatatan->get(),
         ]);
     }
 }
