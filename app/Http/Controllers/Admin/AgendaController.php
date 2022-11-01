@@ -14,7 +14,7 @@ class AgendaController extends Controller
 {
     public function index() {
 
-        $item = Agenda::all();
+        $item = DB::table('agendas')->paginate(10);
         return view('admin.agenda.index', compact('item'));
 
     }

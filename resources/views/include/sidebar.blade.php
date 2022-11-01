@@ -32,13 +32,13 @@
          </a>
      </li>
 
-     <!-- Nav Item - Pages Collapse Menu -->
+     {{-- <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
          <a class="nav-link collapsed" href="{{ route('admin.data-presensi') }}">
              <i class="fas fa-fw fa-folder"></i>
              <span>Data Presensi</span>
          </a>
-     </li>
+     </li> --}}
 
      <!-- Divider -->
      <hr class="sidebar-divider">

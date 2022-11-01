@@ -3,22 +3,22 @@
 @section('content')
     <div class="text-center">
 
-         @if(Session::has('error'))
-		    @if ($message = Session::get('error'))
-		    <div class="alert alert-danger alert-block" style="width: 100%;display: block;">
-		    <button type="button" class="close" data-dismiss="alert">×</button> 
-			    <strong>{{ $message }}</strong>
-		    </div>
-		    @endif
-	    @endif
-        @if(Session::has('success'))
-		    @if ($message = Session::get('success'))
-		    <div class="alert alert-success alert-block" style="width: 100%;display: block;">
-		    <button type="button" class="close" data-dismiss="alert">×</button> 
-			    <strong>{{ $message }}</strong>
-		    </div>
-		    @endif
-	    @endif
+        @if (Session::has('error'))
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger alert-block" style="width: 100%;display: block;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+        @endif
+        @if (Session::has('success'))
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block" style="width: 100%;display: block;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+        @endif
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Murid</h1>
@@ -73,5 +73,6 @@
                 </table>
             </div>
         </div>
+        {{ $item->links() }}
     </div>
 @endsection

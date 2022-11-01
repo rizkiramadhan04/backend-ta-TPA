@@ -17,7 +17,7 @@ class PembayaranController extends Controller
 {
     public function index() {
 
-        $item = Pembayaran::select('pembayarans.*', 'users.name as nama_murid')->join('users', 'pembayarans.user_id', '=', 'users.id')->get();
+        $item = Pembayaran::select('pembayarans.*', 'users.name as nama_murid')->join('users', 'pembayarans.user_id', '=', 'users.id')->paginate(10);
         return view('admin.pembayaran.index', compact('item'));
     }
 

@@ -73,5 +73,6 @@
                 </table>
             </div>
         </div>
+        {{ $item->links() }}
     </div>
 @endsection

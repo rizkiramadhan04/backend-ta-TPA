@@ -13,7 +13,7 @@ class GuruController extends Controller
 {
     public function index() {
 
-        $item = User::where('status', 1)->get();
+        $item = User::where('status', 1)->paginate(10);
 
         return view('admin.guru.index', compact('item'));
     }

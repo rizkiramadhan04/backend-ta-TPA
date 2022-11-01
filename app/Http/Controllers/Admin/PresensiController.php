@@ -16,7 +16,7 @@ class PresensiController extends Controller
 {
     public function index() {
 
-        $item = JadwalPresensi::all();
+        $item = JadwalPresensi::paginate(5);
 
         return view('admin.jadwal_presensi.index', compact('item'));
     }
@@ -81,7 +81,7 @@ class PresensiController extends Controller
     }
 
     public function dataPresensi() {
-        $item = Presensi::select('presensis.*', 'users.name as name', 'users.tingkatan as tingkatan')->join('users', 'presensis.user_id', '=', 'users.id')->get();
+        $item = Presensi::select('presensis.*', 'users.name as name', 'users.tingkatan as tingkatan')->join('users', 'presensis.user_id', '=', 'users.id')->paginate(10);
         
         return view('admin.presensi.index', compact('item'));
     }
