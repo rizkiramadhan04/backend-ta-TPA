@@ -14,6 +14,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PresensiController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() {
 
         $item = JadwalPresensi::paginate(5);

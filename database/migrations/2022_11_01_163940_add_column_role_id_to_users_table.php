@@ -14,7 +14,7 @@ class AddColumnRoleIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role_id')->nullable();
+            $table->string('roles')->default('user')->after('status');
         });
     }
 

@@ -24,7 +24,7 @@
             <h1 class="h3 mb-0 text-gray-800">Pembayaran</h1>
             <a href="{{ route('admin.export-pembayaran') }}" class="btn btn-sm btn-success shadow-sm" data-toggle="modal"
                 data-target="#pembayaran">
-                <i class="fa-solid fa-plus"></i> Export Excel Pembayaran
+               <i class="fa-solid fa-download"></i> Export Excel Pembayaran
             </a>
         </div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -93,13 +93,13 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Export Data Presensi</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Export Data Pembayaran</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6><b>Data Pembaayaran</b></h6>
+                        <h6><b>Data Pembayaran</b></h6>
                         <form action="{{ route('admin.export-pembayaran') }}" method="post">
                             @csrf
                             <div class="form-group">

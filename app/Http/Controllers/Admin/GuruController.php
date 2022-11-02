@@ -8,9 +8,16 @@ use App\Models\User;
 use App\Exports\PresensiExport;
 use App\Exports\MengajarExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() {
 
         $item = User::where('status', 1)->paginate(10);
@@ -19,8 +26,36 @@ class GuruController extends Controller
     }
 
     public function detail($id) {
+        $januari = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '01')->get()->count(); 
+        $februari = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '02')->get()->count(); 
+        $maret = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '03')->get()->count(); 
+        $april = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '04')->get()->count(); 
+        $mei = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '05')->get()->count(); 
+        $juni = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '06')->get()->count(); 
+        $juli = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '07')->get()->count(); 
+        $agustus = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '08')->get()->count(); 
+        $september = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '09')->get()->count(); 
+        $oktober = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '10')->get()->count(); 
+        $november = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '11')->get()->count(); 
+        $desember = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '12')->get()->count(); 
+
+        $dataPresensi = array(
+            'januari' => $januari,
+            'februari' => $februari,
+            'maret' => $maret,
+            'april' => $april,
+            'mei' => $mei,
+            'juni' => $juni,
+            'juli' => $juli,
+            'agustus' => $agustus,
+            'september' => $september,
+            'oktober' => $oktober,
+            'november' => $november,
+            'desember' => $desember,
+        );
+
         $data = User::where('id', $id)->first();
-        return view('admin.guru.detail', compact('data'));
+        return view('admin.guru.detail', compact('data', 'dataPresensi'));
     }
 
     public function createPage() {

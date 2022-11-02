@@ -15,6 +15,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PembayaranController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() {
 
         $item = Pembayaran::select('pembayarans.*', 'users.name as nama_murid')->join('users', 'pembayarans.user_id', '=', 'users.id')->paginate(10);

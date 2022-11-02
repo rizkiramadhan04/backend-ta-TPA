@@ -27,7 +27,7 @@
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
          <a class="nav-link collapsed" href="{{ route('admin.presensi') }}">
-             <i class="fas fa-fw fa-cog"></i>
+             <i class="fa-solid fa-clipboard-user"></i>
              <span>Jadwal Presensi</span>
          </a>
      </li>
@@ -45,15 +45,15 @@
 
      <!-- Heading -->
      <div class="sidebar-heading">
-         Data Master Guru & Murid
+         Data Guru & Murid
      </div>
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#data-master"
              aria-expanded="true" aria-controls="collapsePages">
-             <i class="fas fa-fw fa-folder"></i>
-             <span>Data Master</span>
+             <i class="fa-solid fa-users"></i>
+             <span>Data Guru & Murid</span>
          </a>
          <div id="data-master" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
@@ -79,7 +79,7 @@
      <li class="nav-item">
          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#data-laporan"
              aria-expanded="true" aria-controls="collapsePages">
-             <i class="fas fa-fw fa-folder"></i>
+             <i class="fa-solid fa-calendar"></i>
              <span>Agenda</span>
          </a>
          <div id="data-laporan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -103,7 +103,7 @@
      <li class="nav-item">
          <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#data-suplier"
              aria-expanded="true" aria-controls="collapsePages">
-             <i class="fas fa-fw fa-folder"></i>
+             <i class="fa-solid fa-money-bill"></i>
              <span>Pembayaran</span>
          </a>
          <div id="data-suplier" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">

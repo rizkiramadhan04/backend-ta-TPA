@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\File;
 
 class AgendaController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
 
         $item = DB::table('agendas')->paginate(10);

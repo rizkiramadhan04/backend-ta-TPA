@@ -12,6 +12,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MuridController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() {
 
         $item = User::where('status', 0)->paginate(10);
