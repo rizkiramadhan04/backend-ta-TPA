@@ -106,6 +106,7 @@ class HafalanController extends Controller
                 $hafalan->tanggal_hafalan  = $request->tanggal_hafalan;
                 $hafalan->nilai            = $request->nilai;
                 $hafalan->guru_id          = $guru_id;
+                $hafalan->jenis            = $request->jenis;
         
                 $hafalan->save();
 

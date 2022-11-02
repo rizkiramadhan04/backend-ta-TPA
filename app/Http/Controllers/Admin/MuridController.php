@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Exports\HafalanExport;
 use App\Exports\PresensiExport;
 use App\Exports\PencatatanExport;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -26,9 +27,53 @@ class MuridController extends Controller
     }
 
     public function detail($id) {
+
+        $januari = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '01')->get()->count(); 
+        $februari = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '02')->get()->count(); 
+        $maret = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '03')->get()->count(); 
+        $april = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '04')->get()->count(); 
+        $mei = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '05')->get()->count(); 
+        $juni = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '06')->get()->count(); 
+        $juli = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '07')->get()->count(); 
+        $agustus = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '08')->get()->count(); 
+        $september = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '09')->get()->count(); 
+        $oktober = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '10')->get()->count(); 
+        $november = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '11')->get()->count(); 
+        $desember = DB::table('presensis')->where('user_id', $id)->whereMonth('tanggal_masuk', '12')->get()->count(); 
+
+        $dataPresensi = array(
+            'januari'  => $januari,
+            'februari' => $februari,
+            'maret'    => $maret,
+            'april'    => $april,
+            'mei'      => $mei,
+            'juni'     => $juni,
+            'juli'     => $juli,
+            'agustus'  => $agustus,
+            'september' => $september,
+            'oktober'   => $oktober,
+            'november'  => $november,
+            'desember'  => $desember,
+        );
+
+        $data_mengaji = array(
+            
+            'data_mengaji_ulang'  => DB::table('pencatatans')->where('murid_id', $id)->where('hasil', 0)->whereMonth('tanggal', date('m'))->get()->count(),
+            'data_mengaji_cukup'  => DB::table('pencatatans')->where('murid_id', $id)->where('hasil', 1)->whereMonth('tanggal', date('m'))->get()->count(),
+            'data_mengaji_lanjut' => DB::table('pencatatans')->where('murid_id', $id)->where('hasil', 2)->whereMonth('tanggal', date('m'))->get()->count(),
+        );
+
+        $data_hafalan = array(
+
+            'data_hafalan_1'  => DB::table('hafalans')->where('murid_id', $id)->where('jenis', 0)->whereMonth('tanggal_hafalan', date('m'))->get()->count(),
+            'data_hafalan_2'  => DB::table('hafalans')->where('murid_id', $id)->where('jenis', 1)->whereMonth('tanggal_hafalan', date('m'))->get()->count(),
+        );
+        
+        // dd($data_mengaji);
+
         $data = User::findOrFail($id);
 
-        return view('admin.murid.detail', compact('data'));
+        return view('admin.murid.detail', compact('data', 'dataPresensi', 'data_mengaji', 'data_hafalan'));
     }
 
     public function createPage() {

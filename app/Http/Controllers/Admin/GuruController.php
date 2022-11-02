@@ -54,8 +54,15 @@ class GuruController extends Controller
             'desember' => $desember,
         );
 
+        $data_mengajar = array(
+            
+            'data_mengajar_ulang'  => DB::table('pencatatans')->where('guru_id', $id)->where('hasil', 0)->whereMonth('tanggal', date('m'))->get()->count(),
+            'data_mengajar_cukup'  => DB::table('pencatatans')->where('guru_id', $id)->where('hasil', 1)->whereMonth('tanggal', date('m'))->get()->count(),
+            'data_mengajar_lanjut' => DB::table('pencatatans')->where('guru_id', $id)->where('hasil', 2)->whereMonth('tanggal', date('m'))->get()->count(),
+        );
+
         $data = User::where('id', $id)->first();
-        return view('admin.guru.detail', compact('data', 'dataPresensi'));
+        return view('admin.guru.detail', compact('data', 'dataPresensi', 'data_mengajar'));
     }
 
     public function createPage() {
