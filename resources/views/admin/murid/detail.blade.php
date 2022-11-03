@@ -42,7 +42,7 @@
         <hr>
         <br>
 
-        <h5 style="text-align: center; font-weight: bold;">Persentase presensi dan mengaji murid</h5>
+        <h5 style="text-align: center; font-weight: bold;">Persentase presensi, mengaji, dan menghafal murid</h5>
 
         <div class="row mt-5 mb-5">
 
@@ -180,7 +180,7 @@
                                 class="float-right">{{ $data_mengaji['data_mengaji_ulang'] }}%</span></h4>
                         <div class="progress mb-4">
                             <div class="progress-bar bg-danger" role="progressbar"
-                                style="width: {{ $data_mengaji['data_mengaji_ulang'] }}%"
+                                style="width: {{ ($data_mengaji['data_mengaji_ulang']/30) * 100 }}%"
                                 aria-valuenow="{{ $data_mengaji['data_mengaji_ulang'] }}" aria-valuemin="0"
                                 aria-valuemax="100"></div>
                         </div>
@@ -188,7 +188,7 @@
                                 class="float-right">{{ $data_mengaji['data_mengaji_cukup'] }}%</span></h4>
                         <div class="progress mb-4">
                             <div class="progress-bar bg-warning" role="progressbar"
-                                style="width: {{ $data_mengaji['data_mengaji_cukup'] }}%"
+                                style="width: {{ ($data_mengaji['data_mengaji_cukup']/30) * 100 }}%"
                                 aria-valuenow="{{ $data_mengaji['data_mengaji_cukup'] }}" aria-valuemin="0"
                                 aria-valuemax="100"></div>
                         </div>
@@ -196,7 +196,7 @@
                                 class="float-right">{{ $data_mengaji['data_mengaji_lanjut'] }}%</span></h4>
                         <div class="progress mb-4">
                             <div class="progress-bar bg-warning" role="progressbar"
-                                style="width: {{ $data_mengaji['data_mengaji_lanjut'] }}%"
+                                style="width: {{ ($data_mengaji['data_mengaji_lanjut']/30) * 100 }}%"
                                 aria-valuenow="{{ $data_mengaji['data_mengaji_cukup'] }}" aria-valuemin="0"
                                 aria-valuemax="100"></div>
                         </div>
@@ -226,7 +226,7 @@
                                 class="float-right">{{ $data_hafalan['data_hafalan_1'] }}%</span></h4>
                         <div class="progress mb-4">
                             <div class="progress-bar bg-danger" role="progressbar"
-                                style="width: {{ $data_hafalan['data_hafalan_1'] }}%"
+                                style="width: {{ ($data_hafalan['data_hafalan_1']/7) * 100 }}%"
                                 aria-valuenow="{{ $data_hafalan['data_hafalan_1'] }}" aria-valuemin="0"
                                 aria-valuemax="100"></div>
                         </div>
@@ -234,7 +234,7 @@
                                 class="float-right">{{ $data_hafalan['data_hafalan_2'] }}%</span></h4>
                         <div class="progress mb-4">
                             <div class="progress-bar bg-warning" role="progressbar"
-                                style="width: {{ $data_hafalan['data_hafalan_2'] }}%"
+                                style="width: {{ ($data_hafalan['data_hafalan_2']/15) * 100 }}%"
                                 aria-valuenow="{{ $data_hafalan['data_hafalan_2'] }}" aria-valuemin="0"
                                 aria-valuemax="100"></div>
                         </div>

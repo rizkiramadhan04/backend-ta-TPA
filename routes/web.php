@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'login'])->name('welcome');
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     
-    // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dahboard');
     
     // User
     Route::get('/user', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('user');
@@ -83,3 +83,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 });
 
 Auth::routes(['verify' => true]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
